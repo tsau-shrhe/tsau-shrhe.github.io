@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>側邊小工具選單練習</title>
+    <!--必要jquery-->
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <!--javascript語法-->
+    <script>
+    $(window).load(function() {
+        var header = $('.sidbar');
+        $(".sidbar").fadeOut(1);
+        $(".sidbar2").fadeOut(1);
+        $(window).scroll(function(e) {
+            if (header.offset().top > 100) {
+                $(".sidbar").fadeIn('slow');
+                $(".sidbar2").fadeIn('slow');
+            } else {
+                $(".sidbar").fadeOut('slow');
+                $(".sidbar2").fadeOut('slow');
+            }
+        });
+
+        //當滑鼠移入sidbar2 icon時執行顯示字串
+        $(".si2").mouseover(function() {
+            $(this).prev().css({
+                "visibility": "visible",
+                "color": "blue",
+                "transition": "0.5s"
+            });
+        });
+        $(".si2").mouseout(function() {
+            $(this).prev().css({
+                "visibility": "hidden",
+                "color": "transparent",
+                "transition": "0.5s"
+            });
+        });
+    });
+    </script>
+    <!--css設定-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <style>
+    h1 {
+        margin-top: 300px;
+    }
+    .sidbar {
+        width: 200px;
+        position: fixed;
+        list-style-type: none;
+        top: 10%;
+        right: -160px;
+    }
+    
+    .sidbar li {
+        margin-top: 10px;
+    }
+    
+    .sidbar li:hover {
+        margin-left: -90px;
+        transition: 0.3s;
+    }
+    
+    .sidbar2 {
+        width: 200px;
+        position: fixed;
+        top: 60%;
+        right: -80px;
+        list-style-type: none;
+    }
+    
+    .sidbar2 li a {
+        text-decoration: none;
+        color: blue;
+    }
+    
+    .sidbar2 li a span {
+        visibility: hidden;
+        font-size: 25pt;
+    }
+    </style>
+</head>
+
+<body>
+    <ul class="sidbar">
+        <li><a href=""><i class="fa fa-arrow-circle-o-up fa-2x"> 置頂</i></a></li>
+        <li><a href=""><i class="fa fa-share fa-2x"> 分享</i></a></li>
+        <li><a href=""><i class="fa fa-arrow-circle-o-down fa-2x"> 置底</i></a></li>
+        <li><a href=""><i class="fa fa-home fa-2x"> 首頁</i></a></li>
+    </ul>
+    <ul class="sidbar2">
+        <li><a href=""><span>置頂 </span><i class="fa fa-arrow-circle-o-up fa-2x si2"></i></a></li>
+        <li><a href=""><span>分享 </span><i class="fa fa-share fa-2x si2" ts></i></a></li>
+        <li><a href=""><span>置底 </span><i class="fa fa-arrow-circle-o-down fa-2x si2"></i></a></li>
+        <li><a href=""><span>首頁 </span><i class="fa fa-home fa-2x si2"></i></a></li>
+    </ul>
+    <h1>1</h1>
+    <h1>2</h1>
+    <h1>3</h1>
+    <h1>4</h1>
+    <h1>5</h1>
+</body>
+
+</html>
