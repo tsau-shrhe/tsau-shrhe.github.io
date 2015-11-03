@@ -3,39 +3,70 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="http://tsau-shrhe.github.io/sidbarmenu_scroll.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="側邊小工具選單練習" />
+    <meta property="og:description" content="Your description" />
+    <meta property="og:image" content="http://1.bp.blogspot.com/-yIpQv61XQEc/VI0_-mjJkpI/AAAAAAAAKwM/x8ZObfnkOCU/s1600/fb-like-button-4-installation.jpg" />
     <title>側邊小工具選單練習</title>
     <!--必要jquery-->
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <!--javascript語法-->
     <script>
     $(window).load(function() {
-        var header = $('.sidbar');
-        $(".sidbar").fadeOut(1);
-        $(".sidbar2").fadeOut(1);
+        //當網頁被載入時判斷sidbar目前的偏移量
+        //大於100顯示sidbar，反之則隱藏。
+        if ($('.sidbar').offset().top > 100) {
+            $('.sidbar').fadeIn('slow');
+            $('.sidbar2').fadeIn('slow');
+        } else {
+            $('.sidbar').fadeOut(1);
+            $('.sidbar2').fadeOut(1);
+        }
+
+        //當scroll滾動時判斷sidbar目前的偏移量
+        //大於100顯示sidbar，反之則隱藏。
         $(window).scroll(function(e) {
-            if (header.offset().top > 100) {
-                $(".sidbar").fadeIn('slow');
-                $(".sidbar2").fadeIn('slow');
+            if ($('.sidbar').offset().top > 100) {
+                $('.sidbar').fadeIn('slow');
+                $('.sidbar2').fadeIn('slow');
             } else {
-                $(".sidbar").fadeOut('slow');
-                $(".sidbar2").fadeOut('slow');
+                $('.sidbar').fadeOut('slow');
+                $('.sidbar2').fadeOut('slow');
             }
         });
 
         //當滑鼠移入sidbar2 icon時執行顯示字串
-        $(".si2").mouseover(function() {
+        $('.si2').mouseover(function() {
             $(this).prev().css({
                 "visibility": "visible",
                 "color": "blue",
-                "transition": "0.5s"
+                "transition": "1s"
             });
         });
-        $(".si2").mouseout(function() {
+        //當滑鼠移入sidbar2 icon時執行隱藏字串
+        $('.si2').mouseout(function() {
             $(this).prev().css({
                 "visibility": "hidden",
                 "color": "transparent",
-                "transition": "0.5s"
+                "transition": "1s"
             });
+        });
+
+        //置頂功能
+        $('.top').click(function() {
+            jQuery("html,body").animate({
+                scrollTop: 0
+            }, 1000);
+        });
+
+        //置底功能
+        $('.bottom').click(function() {
+            jQuery("html,body").animate({
+                scrollTop: $(document).height()
+            }, 1000);
         });
     });
     </script>
@@ -45,6 +76,7 @@
     h1 {
         margin-top: 300px;
     }
+    
     .sidbar {
         width: 200px;
         position: fixed;
@@ -55,6 +87,8 @@
     
     .sidbar li {
         margin-top: 10px;
+        cursor: pointer;
+        color: blue;
     }
     
     .sidbar li:hover {
@@ -70,12 +104,12 @@
         list-style-type: none;
     }
     
-    .sidbar2 li a {
-        text-decoration: none;
+    .sidbar2 li {
+        cursor: pointer;
         color: blue;
     }
     
-    .sidbar2 li a span {
+    .sidbar2 li span {
         visibility: hidden;
         font-size: 25pt;
     }
@@ -84,16 +118,18 @@
 
 <body>
     <ul class="sidbar">
-        <li><a href=""><i class="fa fa-arrow-circle-o-up fa-2x"> 置頂</i></a></li>
-        <li><a href=""><i class="fa fa-share fa-2x"> 分享</i></a></li>
-        <li><a href=""><i class="fa fa-arrow-circle-o-down fa-2x"> 置底</i></a></li>
-        <li><a href=""><i class="fa fa-home fa-2x"> 首頁</i></a></li>
+        <li class="top"><i class="fa fa-arrow-circle-o-up fa-2x"> 置頂</i></li>
+        <li><i class="fa fa-home fa-2x"> 首頁</i></li>
+        <li><i class="fa fa-facebook-square fa-2x"> 分享</i></li>
+        <li><i class="fa fa-twitter-square fa-2x"> 分享</i></li>
+        <li class="bottom"><i class="fa fa-arrow-circle-o-down fa-2x"> 置底</i></li>
     </ul>
     <ul class="sidbar2">
-        <li><a href=""><span>置頂 </span><i class="fa fa-arrow-circle-o-up fa-2x si2"></i></a></li>
-        <li><a href=""><span>分享 </span><i class="fa fa-share fa-2x si2" ts></i></a></li>
-        <li><a href=""><span>置底 </span><i class="fa fa-arrow-circle-o-down fa-2x si2"></i></a></li>
-        <li><a href=""><span>首頁 </span><i class="fa fa-home fa-2x si2"></i></a></li>
+        <li class="top"><span>置頂 </span><i class="fa fa-arrow-circle-o-up fa-2x si2"></i></li>
+        <li><span>首頁 </span><i class="fa fa-home fa-2x si2"></i></li>
+        <li><a href="http://www.facebook.com/sharer.php?u=http://tsau-shrhe.github.io/sidbarmenu_scroll.html" target="_blank"><span>分享 </span><i class="fa fa-facebook-square fa-2x si2" ts></i></a></li>
+        <li><span>分享 </span><i class="fa fa-twitter-square fa-2x si2" ts></i></li>
+        <li class="bottom"><span>置底 </span><i class="fa fa-arrow-circle-o-down fa-2x si2"></i></li>
     </ul>
     <h1>1</h1>
     <h1>2</h1>
