@@ -79,31 +79,43 @@
     .nav {
         width: 100%;
         height: 100%;
-        background: #dddddd;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: 0.3s;
+        transition: 0.5s;
+    }
+    
+    .nav1 {
+        background: rgba(221, 221, 221, 0.99);
+    }
+    
+    .nav2 {
+        background: rgba(221, 221, 221, 0.4);
+    }
+    
+    .nav3 {
+        background: rgba(221, 221, 221, 0);
     }
     
     .nav.change {
         //width: 99%; /*如果要左右縮小使用*/
         height: 50%;
+        background: rgba(221, 221, 221, 1);
         box-shadow: 0px 3px 1px -1px rgba(20%, 20%, 40%, 0.5);
-        transition: 0.3s;
+        transition: 0.5s;
     }
     </style>
 </head>
 
 <body>
     <div class="navbox">
-        <div class="nav">我往上縮 align-items: flex-star;</div>
+        <div class="nav nav1">我往上縮 align-items: flex-star;</div>
     </div>
     <div class="navbox2">
-        <div class="nav">我往中間縮 align-items: center;</div>
+        <div class="nav nav2">我往中間縮 align-items: center;</div>
     </div>
     <div class="navbox3">
-        <div class="nav">我往下縮 align-items: flex-end;</div>
+        <div class="nav nav3">我往下縮 align-items: flex-end;</div>
     </div>
     <h1>請將頁面往下移動。</h1>
     <h1>2</h1>
