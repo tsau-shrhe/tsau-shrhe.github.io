@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>scroll滾動下拉header隱藏 往上拉時顯示</title>
+    <title>scroll滾動上下拉動時，header(navbar)顯示隱藏。</title>
     <!--必要jquery-->
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <!--javascript語法-->
     <script>
     $(window).load(function() {
-        var x2 = 0;
+        var x1 = 0; //定義初始坐標值
         var header = $('.nav'); //指定class
         //初始化頂端座標的距離
         if (header.offset().top > 5) {
@@ -26,30 +26,34 @@
         //開始滾動時與端座標的距離
         $(window).scroll(function(e) {
 
-            if (header.offset().top > 60) {
+            if (header.offset().top > 5) {
                 if (!header.hasClass('change')) {
                     header.addClass('change');
                 }
-
-                var x1 = x2;
-                x2 = header.offset().top;    
-                if (x1 < x2 && header.offset().top > 100) {
-                    $('.navbox').slideUp('slow');
+                //將變數x2指定為x1的值
+                var x2 = x1;
+                //重新抓取目前最新作標值
+                x1 = header.offset().top;
+                //當 x1 > x2 為頁面下拉觸發   
+                if (x1 > x2 && header.offset().top > 100) {
+                    $('.navbox').stop(true); //停止剩餘未執行的動畫列表
+                    //$('.navbox').slideUp('slow'); //也可使用
+                    $('.navbox').animate({
+                        top: "-50px"
+                    });
                 }
-                if (x1 > x2 || header.offset().top < 100) {
-                    $('.navbox').slideDown('slow');
+                //當 x1 < x2 為頁面上拉觸發  
+                if (x1 < x2 || header.offset().top < 100) {
+                    $('.navbox').stop(true); //停止剩餘未執行的動畫列表
+                    //$('.navbox').slideDown('slow'); //也可使用
+                    $('.navbox').animate({
+                        top: "0px"
+                    });
                 }
 
             } else {
                 header.removeClass('change');
             }
-
-            if (header.offset().top > 120) {
-
-
-
-
-            };
         });
     });
     </script>
