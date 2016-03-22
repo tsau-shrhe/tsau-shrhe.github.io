@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>地圖練習頁</title>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script>
+    //整頁地圖的中心位置
+    var mapCenter = new google.maps.LatLng(23.4936549, 120.6810084);
+
+    //初始化 function
+    function initialize() {
+        //定義地圖形式
+        var mapProp = {
+            center: mapCenter,  //地圖中心位置
+            zoom: 6,            //
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        //建立地圖物件
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        //標記的座標
+        //var markCenter = new google.maps.LatLng(22.610838, 120.317685);
+        var marker_data = [
+            ['資三忠', 22.610838, 120.317685, 1, 'http://c2.staticflickr.com/8/7760/18010364659_c040a58f68_h.jpg'],
+            ['昶亨科技', 22.604827, 120.289093, 2, 'https://lh6.googleusercontent.com/-nORyQWqF4rM/VO7WTh5PSxI/AAAAAAAAACM/U_Pb4we2drg/s408-k-no/'],
+            ['榮仔蔥油餅', 22.575372, 120.296679, 3, 'https://lh3.googleusercontent.com/-3zQy8YzaT_s/VcitO2pLltI/AAAAAAAAAAQ/MPI1RU2m6TU/s640-Ic42/.jpg'],
+        ];
+
+        //標記顯示
+        for (var i = 0; i < marker_data.length; i++) {
+            var position_info = marker_data[i];
+            //建立標記ICON
+            var markericon = {
+                url: position_info[4],
+                // This marker is 20 pixels wide by 32 pixels high.
+                //size: new google.maps.Size(20, 20),
+                scaledSize: new google.maps.Size(50, 50), // scaled size
+                origin: new google.maps.Point(0, 0), // origin
+                anchor: new google.maps.Point(25, 25) // anchor
+            };
+            //var shape = {
+            //    coords: [1, 1, 1, 20, 18, 20, 18, 1],
+            //    type: ''
+            //};
+            var marker = new google.maps.Marker({
+                position: {
+                    lat: position_info[1],
+                    lng: position_info[2]
+                },
+                map: map,
+                icon: markericon,
+                //shape: shape,
+                title: position_info[0],
+                zIndex: position_info[3]
+            });
+        }
+
+        //執行標記注入地圖
+        marker.setMap(map);
+    }
+
+    //地圖監聽器
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto', 'sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="googleMap" style="width:100%;"></div>
+    <!--
+    <div id="floating-panel">
+        <input onclick="clearMarkers();" type=button value="隱藏標記">
+        <input onclick="showMarkers();" type=button value="顯示標記">
+        <input onclick="deleteMarkers();" type=button value="刪除標記">
+    </div>
+    -->
+    <script>
+    //偵測頁面高度並寫入
+    document.getElementById("googleMap").style.height = document.documentElement.clientHeight + 'px';
+    </script>
+</body>
+
+</html>
