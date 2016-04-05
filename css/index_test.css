@@ -1,0 +1,80 @@
+body{
+	color: #fff;
+}
+
+.top {
+    background-color: #39C2E8;
+    height: 80px;
+}
+
+.left {
+    background-color: #3E3D44;
+    height: inherit;
+}
+
+.right {
+    background-color: #4B4C55;
+    height: inherit;
+}
+
+.name {
+    color: #fff;
+    margin: 8px 0px -20px 0px;
+    font-weight: 900;
+}
+
+.en-name {
+    color: #fff;
+    font-weight: 900;
+}
+
+.mug {
+    width: 220px;
+    height: 220px;
+    margin: 20px 0px 20px 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.circle {
+    margin: 5px;
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    padding: 10px;
+    background: #39C2E8;
+}
+.info-list li{
+    font-size: 28px;
+    margin-bottom: 5px;
+
+}
+.banner{
+    color: #39C2E8;
+    border-left: 10px solid #39C2E8;
+    border-bottom: 2px solid #39C2E8;
+    padding: 3px;
+}
+/* Extra small devices (phones, less than 768px) */
+
+
+/* No media query since this is the default in Bootstrap */
+
+@media (max-width: @screen-xs-max) {}
+
+
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {}
+
+
+/* Medium devices (desktops, 992px and up) */
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {}
+
+
+/* Large devices (large desktops, 1200px and up) */
+
+@media (min-width: @screen-lg-min) {}
