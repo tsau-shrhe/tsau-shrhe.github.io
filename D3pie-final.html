@@ -1,0 +1,100 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+
+<div id="pieChart"></div>
+
+<script src="js/d3.min.js"></script>
+<script src="js/d3pie.min.js"></script>
+<script>
+
+var pie = new d3pie("pieChart", {
+  "header": {
+    "title": {
+      "text": "各部門領用比率",
+      //"color": "#000",
+      //"font": "標楷體",
+      "fontSize": 24
+    },
+    "subtitle": {
+			"text": "分析比率",
+      //"color": "#000",
+      //"font": "標楷體",
+      "fontSize": 10
+		},
+    "location": "pie-center"
+  },
+  "footer": {
+    "text": "備註:這邊是每部門的分析比率",
+    "location": "bottom-center",
+    "color": "#999999",
+    //"font": "標楷體",
+    "fontSize": 20
+  },
+  "size": {
+    //"canvasHeight": 500,
+    //"canvasWidth": 590,
+    "pieInnerRadius": "60%",
+    "pieOuterRadius": "90%"
+  },
+  "labels": {
+    "outer": {
+      "format": "none",
+      //"pieDistance": 20
+    },
+    "inner": {
+      "format": "label-percentage2"
+    },
+    "mainLabel": {
+      "color": "#fff",
+      //"font": "標楷體",
+      "fontSize": 14
+    },
+    "percentage": {
+      "color": "#fff",
+      //"font": "標楷體",
+      "fontSize": 14 ,
+      "decimalPlaces": 0 //小數點位數
+    },
+    //"value": {
+    //  "color": "#1a1a1a",
+    //  "fontSize": 14
+    //},
+    //"truncation": {
+    //  "enabled": true
+    //}
+  },
+  "tooltips": {
+    "enabled": true,
+    "type": "placeholder",
+    "string": "{value} 筆紀錄", //{label}: {percentage}% ({value}筆)
+    "styles": {
+      "fadeInSpeed": 500,
+      "backgroundColor": "#00cc99",
+      "backgroundOpacity": 0.8,
+      "borderRadius": 4,
+      "color": "#ffffcc",
+      //"font": "標楷體",
+      "fontSize": 14 ,
+      "padding": 10
+    }
+  },
+  "data": {
+    "sortOrder": "label-asc",
+    "content": [
+      { "label": "後製程", "value": 1 },{ "label": "前段", "value": 1 },
+      { "label": "系統", "value": 1 },{ "label": "測試", "value": 1 },
+      { "label": "品保", "value": 1 },{ "label": "物料", "value": 1 },
+      { "label": "工程", "value": 1 },{ "label": "製本部", "value": 1 },
+      { "label": "行政", "value": 1 },{ "label": "廠務", "value": 1 },
+      { "label": "工務", "value": 1 },{ "label": "業務", "value": 1 },
+      { "label": "財務", "value": 1 }
+    ]
+  },
+});
+</script>
+
+</body>
+</html>
